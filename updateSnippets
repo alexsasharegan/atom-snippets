@@ -1,0 +1,12 @@
+#!/bin/bash
+
+clear
+
+echo "> Copying snippets into Atom..."
+
+cp snippets.cson ~/.atom/snippets.cson
+
+echo "> ...Copy success!"
+echo "> Opening your new snippets in Atom."
+
+atom ~/.atom/snippets.cson
