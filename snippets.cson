@@ -68,6 +68,18 @@
   '<Obj> => Method':
     'prefix': 'kfa'
     'body': '${1:methodName}: (${2:attribute}) => {\n\t$3\n}${4:,}$5'
+  'CommonJS require':
+    'prefix': 'req'
+    'body': 'var ${1:module} = require(\'${3:${1:module}}\');$2$4'
+  'Mocha describe()':
+    'prefix': 'des'
+    'body': 'describe(\'${1:component}\', () => {\n\t$2\n});$3'
+  'Mocha it()':
+    'prefix': 'it'
+    'body': 'it(\'should ${1:funct}\', () => {\n\t$2\n});$3'
+  'Template String':
+    'prefix': 'tstr'
+    'body': '`$1\${${2:var}}$3`$4'
 
 #JSON
 '.source.json':
@@ -85,10 +97,10 @@
     'body': '''var React = require('react');
 
     var ${1:Component} = React.createClass({
-      ${3:// }
+      ${2:// }
     });
 
-    module.exports = ${2:Component};'''
+    module.exports = ${1:Component};'''
 
 #HTML
 '.text.html':
