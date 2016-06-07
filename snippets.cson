@@ -106,7 +106,7 @@
 '.text.html':
   'Underscore Template':
     'prefix': '_tem'
-    'body': '''<%= $1 %>'''
+    'body': '''<%${1:=} $2 %>$3'''
   'Comment':
     'prefix': 'comment'
     'body': '''<!-- ${1:Comment} -->'''
