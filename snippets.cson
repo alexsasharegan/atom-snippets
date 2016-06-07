@@ -128,6 +128,12 @@
   'assoc var':
     'prefix': 'assocvar'
     'body': '''$${1:var}['$2'] = $3;$4'''
+  'consoleLog()':
+    'prefix': 'log'
+    'body': 'consoleLog($$1);$2'
+  'sendJSON':
+    'prefix': 'sj'
+    'body': 'sendJSON($${1:response}, ${2:200});$3'
 
 #Typescript
 '.source.ts':
