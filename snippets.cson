@@ -80,6 +80,9 @@
   'Template String':
     'prefix': 'tstr'
     'body': '`$1\${${2:var}}$3`$4'
+  'setTimeout (es6)':
+    'prefix': 'settime'
+    'body': 'setTimeout(($1) => {\n\t$3\n}, ${2:1000});$4'
 
 #JSON
 '.source.json':
