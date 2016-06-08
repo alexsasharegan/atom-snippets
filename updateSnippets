@@ -1,7 +1,5 @@
 #!/bin/bash
 
-clear
-
 echo "> Copying snippets into Atom..."
 
 if cp $(dirname $0)/snippets.cson ~/.atom/snippets.cson
