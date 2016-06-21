@@ -76,13 +76,16 @@
     'body': 'describe(\'${1:component}\', () => {\n\t$2\n});$3'
   'Mocha it()':
     'prefix': 'it'
-    'body': 'it(\'should ${1:funct}\', () => {\n\t$2\n});$3'
+    'body': 'it(\'should ${1:funct}\', ($2) => {\n\t$3\n});$4'
   'Template String':
     'prefix': 'tstr'
     'body': '`$1\${${2:var}}$3`$4'
   'setTimeout (es6)':
     'prefix': 'settime'
     'body': 'setTimeout(($1) => {\n\t$3\n}, ${2:1000});$4'
+  'var x = func':
+    'prefix': 'varfun'
+    'body': 'var ${1:ref} = ($2) => {\n\t$3\n};$4'
 
 #JSON
 '.source.json':
@@ -137,9 +140,6 @@
   'sendJSON':
     'prefix': 'sj'
     'body': 'sendJSON($${1:response}, ${2:200});$3'
-  'function':
-    'prefix': 'fun'
-    'body': 'function ${1:functionName} ($${2:args}) {\n\t$3\n}$4'
 
 #Typescript
 '.source.ts':
