@@ -116,6 +116,13 @@
   'Comment':
     'prefix': 'comment'
     'body': '''<!-- ${1:Comment} -->'''
+    
+
+#PHP outside code block tags
+'.text.html.php':
+  'echo shorthand':
+    'prefix': 'echo'
+    'body': '<?= $1 ?>$2'
 
 #PHP
 '.source.php':
