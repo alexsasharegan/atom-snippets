@@ -140,6 +140,10 @@
   'sendJSON':
     'prefix': 'sj'
     'body': 'sendJSON($${1:response}, ${2:200});$3'
+  'function':
+    'prefix': 'fun'
+    'body': 'function ${1:functionName} ($${2:args}) {\n\t$3\n}$4'
+
 
 #Typescript
 '.source.ts':
