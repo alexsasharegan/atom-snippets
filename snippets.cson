@@ -150,6 +150,9 @@
   'function':
     'prefix': 'fun'
     'body': 'function ${1:functionName} ($${2:args}) {\n\t$3\n}$4'
+  'new Class':
+    'prefix': 'class'
+    'body': 'class ${1:ClassName} {\n\n\tfunction ${1:ClassName}($2) {\n\t\t${3:#code}\n\t}\n}'
 
 
 #Typescript
