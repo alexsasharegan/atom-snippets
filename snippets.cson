@@ -153,7 +153,15 @@
   'new Class':
     'prefix': 'class'
     'body': 'class ${1:ClassName} {\n\n\tfunction ${1:ClassName}($2) {\n\t\t${3:#code}\n\t}\n}'
-
+  'this->':
+    'prefix': 'this'
+    'body': '$this->$1'
+  'obj prop':
+    'prefix': 'op'
+    'body': '$${1:object}->${2:prop}'
+  'obj method':
+    'prefix': 'om'
+    'body': '$${1:object}->${2:method}($${3:args})$4'
 
 #Typescript
 '.source.ts':
