@@ -116,6 +116,9 @@
   'constructor':
     'prefix': 'const'
     'body': 'constructor(props) {\n\tsuper(props);\n\t\n\t${1:this.state = $2}\n}'
+  'class method':
+    'prefix': 'cm'
+    'body': '${1:method}(${2:args}) {\n\t$3\n}'
 
 #HTML
 '.text.html':
