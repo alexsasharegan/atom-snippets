@@ -98,15 +98,24 @@
 
 #React
 '.source.js.jsx':
-  'React Component Boilerplate':
-    'prefix': 'reactcompononent'
-    'body': '''var React = require('react');
+  'component':
+    'prefix': 'comp'
+    'body': '''import React, { Component } from 'react'
 
-    var ${1:Component} = React.createClass({
-      ${2:// }
-    });
+    class ${1:MyComponent} extends Component {
+      render() {
+        return (
+          ${2:<div>
+            ${3:MyComponent}
+          </div>}
+        );
+      }
+    }
 
-    module.exports = ${1:Component};'''
+    export default ${1:MyComponent}'''
+  'constructor':
+    'prefix': 'const'
+    'body': 'constructor(props) {\n\tsuper(props);\n\t\n\t${1:this.state = $2}\n}'
 
 #HTML
 '.text.html':
