@@ -98,8 +98,8 @@
 
 #React
 '.source.js.jsx':
-  'component':
-    'prefix': 'comp'
+  'class component':
+    'prefix': 'ccomp'
     'body': '''import React, { Component } from 'react'
 
     class ${1:MyComponent} extends Component {
@@ -113,12 +113,25 @@
     }
 
     export default ${1:MyComponent}'''
-  'constructor':
-    'prefix': 'const'
-    'body': 'constructor(props) {\n\tsuper(props);\n\t\n\t${1:this.state = $2}\n}'
+  'func component':
+    'prefix': 'fcomp'
+    'body': '''import React, { Component } from 'react'
+
+    export default props => {
+      return (
+        ${1:<div>
+          ${2:FunctionalComponent}
+        </div>}
+      );
+    }'''
   'class method':
     'prefix': 'cm'
     'body': '${1:method}(${2:args}) {\n\t$3\n}'
+#React class body
+'.meta.class.body.js':
+  'constructor':
+    'prefix': 'const'
+    'body': 'constructor(props) {\n\tsuper(props);\n\t\n\t${1:this.state = $2}\n}'
 
 #HTML
 '.text.html':
