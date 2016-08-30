@@ -115,7 +115,7 @@
     export default ${1:MyComponent}'''
   'func component':
     'prefix': 'fcomp'
-    'body': '''import React, { Component } from 'react'
+    'body': '''import React from 'react'
 
     export default props => {
       return (
