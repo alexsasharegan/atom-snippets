@@ -136,6 +136,9 @@
   'export constant':
     'prefix': 'expconst'
     'body': 'export const ${1:MY_CONSTANT} = ${2:\'myConstant\'};$3'
+  'import':
+    'prefix': 'imp'
+    'body': 'import ${1:Component} from \'${2:component}\';$3'
 #React class body
 '.meta.class.body.js':
   'constructor':
