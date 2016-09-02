@@ -143,6 +143,8 @@
 '.meta.class.body.js':
   'constructor':
     'prefix': 'construct'
+    'leftLabel': 'react'
+    'description': 'Constructor func for a stateful component.'
     'body': 'constructor(props) {\n\tsuper(props);\n\t\n\t${1:this.state = ${2:\\{\\};}}\n}'
 
 #HTML
@@ -354,6 +356,42 @@
 
 #Markdown
 '.source.gfm':
-  'Link':
+  'link':
     'prefix': 'link'
     'body': '[${1:anchorText}](${2:href})$3'
+  'img':
+    'prefix': 'img'
+    'body': '![${1:altText}](${2:src})$3'
+  'h1':
+    'prefix': 'h1'
+    'body': '# ${1:Heading1}'
+  'h2':
+    'prefix': 'h2'
+    'body': '## ${1:Heading2}'
+  'h3':
+    'prefix': 'h3'
+    'body': '### ${1:Heading3}'
+  'h4':
+    'prefix': 'h4'
+    'body': '#### ${1:Heading4}'
+  'h5':
+    'prefix': 'h5'
+    'body': '##### ${1:Heading5}'
+  'h6':
+    'prefix': 'h6'
+    'body': '###### ${1:Heading6}'
+  'emphasis':
+    'prefix': 'em'
+    'body': '_${1:italics}_'
+  'strong':
+    'prefix': 'strong'
+    'body': '**${1:italics}**'
+  'strikethrough':
+    'prefix': 'strike'
+    'body': '~~${1:strikethrough}~~'
+  'blockquote':
+    'prefix': 'blockquote'
+    'body': '> ${1:quote}'
+  'hr':
+    'prefix': 'hr'
+    'body': '\n- - - -\n$1'
