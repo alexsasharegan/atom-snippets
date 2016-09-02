@@ -351,3 +351,9 @@
   'import':
     'prefix': 'import'
     'body': '@import \'$1\';$2'
+
+#Markdown
+'.source.gfm':
+  'Link':
+    'prefix': 'link'
+    'body': '[${1:anchorText}](${2:href})$3'
