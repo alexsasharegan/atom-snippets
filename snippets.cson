@@ -142,8 +142,8 @@
 #React class body
 '.meta.class.body.js':
   'constructor':
-    'prefix': 'const'
-    'body': 'constructor(props) {\n\tsuper(props);\n\t\n\t${1:this.state = $2}\n}'
+    'prefix': 'construct'
+    'body': 'constructor(props) {\n\tsuper(props);\n\t\n\t${1:this.state = ${2:\\{\\};}}\n}'
 
 #HTML
 '.text.html':
