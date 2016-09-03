@@ -56,16 +56,16 @@
       app.${3:Module} = ${1:thing};
 
     }(jQuery));'''
-  '() ? a : b;':
+  'bool ? a : b;':
     'prefix': 'ternary'
-    'body': '(${1:expression}) ? ${2:true} : ${3:false};$4'
+    'body': '${1:expression} ? ${2:true} : ${3:false};$4'
   'ObjKey : value,':
     'prefix': 'kv'
     'body': '${1:key}: ${2:value},$3'
   'Arrow Function':
     'prefix': 'lambda'
     'body': '($1) => {$2}$3'
-  '<Obj> => Method':
+  'Obj => Method':
     'prefix': 'kfa'
     'body': '${1:methodName}: (${2:attribute}) => {\n\t$3\n}${4:,}$5'
   'CommonJS require':
@@ -76,30 +76,19 @@
     'body': 'describe(\'${1:component}\', () => {\n\t$2\n});$3'
   'Mocha it()':
     'prefix': 'it'
-    'body': 'it(\'should ${1:funct}\', ($2) => {\n\t$3\n});$4'
+    'body': 'it(\'should ${1:funct}\', () => {\n\t$2\n});$3'
   'Template String':
     'prefix': 'tstr'
     'body': '`$1\${${2:var}}$3`$4'
   'setTimeout (es6)':
     'prefix': 'settime'
     'body': 'setTimeout(($1) => {\n\t$3\n}, ${2:1000});$4'
-  'var x = func':
-    'prefix': 'varfun'
-    'body': 'var ${1:ref} = ($2) => {\n\t$3\n};$4'
-
-#JSON
-'.source.json':
-  'key:value':
-    'prefix': 'kv'
-    'body': '''"${1:key}": ${3:"${2:value}"},$4'''
-  'engines':
-    'prefix': 'engines'
-    'body': '"engines" : {\n\t"node": "^${1:6.1.0}",\n\t"npm" : "^${2:3.8.8}"\n},'
 
 #React
 '.source.js.jsx':
   'class component':
     'prefix': 'ccomp'
+    'leftLabel': 'react'
     'body': '''import React, { Component } from 'react'
 
     class ${1:MyComponent} extends Component {
@@ -146,61 +135,6 @@
     'leftLabel': 'react'
     'description': 'Constructor func for a stateful component.'
     'body': 'constructor(props) {\n\tsuper(props);\n\t\n\t${1:this.state = ${2:\\{\\};}}\n}'
-
-#HTML
-'.text.html':
-  'Underscore Template':
-    'prefix': '_tem'
-    'body': '''<%${1:=} $2 %>$3'''
-  'Comment':
-    'prefix': 'comment'
-    'body': '''<!-- ${1:Comment} -->'''
-    
-
-#PHP outside code block tags
-'.text.html.php':
-  'echo shorthand':
-    'prefix': 'echo'
-    'body': '<?= $1 ?>$2'
-
-#PHP
-'.source.php':
-  'key => value':
-    'prefix': 'kv'
-    'body': ''''${1:key}' => ${2:value},$3'''
-  '$ = () ? a : b;':
-    'prefix': 'ternary'
-    'body': '''(${1:condition}) ? ${2:true} : ${3:false};$4'''
-  '$var':
-    'prefix': 'variable'
-    'body': '''$${1:var} = ${2:value};$3'''
-  '$var1[] = $var2[]':
-    'prefix': 'varreasign'
-    'body': '''$${2:var1}['${1:val}'] = ${4:($5) }$${3:var2}['${1:val}'];$6'''
-  'assoc var':
-    'prefix': 'assocvar'
-    'body': '''$${1:var}['$2'] = $3;$4'''
-  'consoleLog()':
-    'prefix': 'log'
-    'body': 'consoleLog($$1);$2'
-  'sendJSON':
-    'prefix': 'sj'
-    'body': 'sendJSON($${1:response}, ${2:200});$3'
-  'function':
-    'prefix': 'fun'
-    'body': 'function ${1:functionName} ($${2:args}) {\n\t$3\n}$4'
-  'new Class':
-    'prefix': 'class'
-    'body': 'class ${1:ClassName} {\n\n\tfunction __construct($2) {\n\t\t${3:#code}\n\t}\n}'
-  'this->':
-    'prefix': 'this'
-    'body': '$this->$1'
-  'obj prop':
-    'prefix': 'op'
-    'body': '$${1:object}->${2:prop}'
-  'obj method':
-    'prefix': 'om'
-    'body': '$${1:object}->${2:method}($${3:args})$4'
 
 #Typescript
 '.source.ts':
@@ -318,35 +252,69 @@
   'export module':
     'prefix': 'expmod'
     'body': 'module.exports = ${1:name};'
-  'Backbone View':
-    'prefix': 'bbv'
-    'body': 'Backbone.View.extend({\n\t${1:// }\n});$2'
-  'Backbone Model':
-    'prefix': 'bbm'
-    'body': 'Backbone.Model.extend({\n\t${1:// }\n});$2'
-  'Backbone Collection':
-    'prefix': 'bbc'
-    'body': 'Backbone.Collection.extend({\n\t${1:// }\n});$2'
-  'Backbone Router':
-    'prefix': 'bbr'
-    'body': 'Backbone.Router.extend({\n\t${1:// }\n});'
-  'Backbone Module':
-    'prefix': 'bbmod'
-    'body': '''var app = app || {};
-
-    (function($) {
-      'use strict';
-
-      var ${1:thing} = Backbone.${2:View}.extend({
-        ${4:// }
-      });
-
-      app.${3:Module} = ${1:thing};
-
-    }(jQuery));'''
   '(…) ? true : false;':
     'prefix': 'ternary'
     'body': '(${1:expression}) ? ${2:true} : ${3:false};$4'
+
+#JSON
+'.source.json':
+  'key:value':
+    'prefix': 'kv'
+    'body': '''"${1:key}": ${3:"${2:value}"},$4'''
+  'engines':
+    'prefix': 'engines'
+    'body': '"engines" : {\n\t"node": "^${1:6.1.0}",\n\t"npm" : "^${2:3.8.8}"\n},'
+
+#HTML
+'.text.html':
+  'Underscore Template':
+    'prefix': '_tem'
+    'body': '''<%${1:=} $2 %>$3'''
+  'Comment':
+    'prefix': 'comment'
+    'body': '''<!-- ${1:Comment} -->'''
+
+#PHP outside code block tags
+'.text.html.php':
+  'echo shorthand':
+    'prefix': 'echo'
+    'body': '<?= $1 ?>$2'
+
+#PHP
+'.source.php':
+  'key => value':
+    'prefix': 'kv'
+    'body': ''''${1:key}' => ${2:value},$3'''
+  'bool ? a : b;':
+    'prefix': 'ternary'
+    'body': '''${1:empty(${2:$})} ? ${3:true} : ${4:false};$5'''
+  '$var':
+    'prefix': 'variable'
+    'body': '''$${1:var} = ${2:value};$3'''
+  'assoc':
+    'prefix': 'assoc'
+    'body': '''$${1:var}['$2'] = ${3:'value'};$4'''
+  'consoleLog()':
+    'prefix': 'log'
+    'body': 'consoleLog($1);$2'
+  'function':
+    'prefix': 'fun'
+    'body': 'function ${1:functionName}($${2:args}) {\n\t$3\n}$4'
+  'public func':
+    'prefix': 'pubfunc'
+    'body': 'public function ${1:myFunc}($${2:args}) {\n\t$3\n}$4'
+  'new Class':
+    'prefix': 'class'
+    'body': 'class ${1:ClassName} {\n\n\tfunction __construct($2) {\n\t\t${3:#code}\n\t}\n}'
+  'this->':
+    'prefix': 'this'
+    'body': '$this->$1'
+  'obj prop':
+    'prefix': 'op'
+    'body': '$${1:object}->${2:prop}'
+  'obj method':
+    'prefix': 'om'
+    'body': '$${1:object}->${2:method}(${3:$args});$4'
 
 #SCSS
 '.source.css.scss':
@@ -382,10 +350,10 @@
     'body': '###### ${1:Heading6}'
   'emphasis':
     'prefix': 'em'
-    'body': '_${1:italics}_'
+    'body': '_${1:italics}_$2'
   'strong':
     'prefix': 'strong'
-    'body': '**${1:italics}**'
+    'body': '**${1:italics}**$2'
   'strikethrough':
     'prefix': 'strike'
     'body': '~~${1:strikethrough}~~'
@@ -395,3 +363,6 @@
   'hr':
     'prefix': 'hr'
     'body': '\n- - - -\n$1'
+  'code block':
+    'prefix': 'code'
+    'body': '```${1:grammar}\n${2:</>}\n```$3'
