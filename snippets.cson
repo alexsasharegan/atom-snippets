@@ -303,6 +303,9 @@
   'public func':
     'prefix': 'pubfunc'
     'body': 'public function ${1:myFunc}($${2:args}) {\n\t$3\n}$4'
+  'private func':
+    'prefix': 'privfunc'
+    'body': 'private function ${1:myFunc}($${2:args}) {\n\t$3\n}$4'
   'new Class':
     'prefix': 'class'
     'body': 'class ${1:ClassName} {\n\n\tfunction __construct($2) {\n\t\t${3:#code}\n\t}\n}'
@@ -353,7 +356,7 @@
     'body': '_${1:italics}_$2'
   'strong':
     'prefix': 'strong'
-    'body': '**${1:italics}**$2'
+    'body': '**${1:bold}**$2'
   'strikethrough':
     'prefix': 'strike'
     'body': '~~${1:strikethrough}~~'
